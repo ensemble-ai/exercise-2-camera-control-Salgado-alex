@@ -27,17 +27,19 @@ func draw_logic() -> void:
 	mesh_instance.mesh = immediate_mesh
 	mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	
-	var cross:float = 5.0
+	var cross_top:float = -5.0
+	var cross_bottom:float = 5.0
+	var cross_left:float = -5.0
+	var cross_right:float = 5.0
 	
-
 	immediate_mesh.surface_begin(Mesh.PRIMITIVE_LINES, material)
 	# Vertical lines 
-	immediate_mesh.surface_add_vertex(Vector3(0, 0, -cross))
-	immediate_mesh.surface_add_vertex(Vector3(0, 0, cross))
+	immediate_mesh.surface_add_vertex(Vector3(0, 0,cross_top))
+	immediate_mesh.surface_add_vertex(Vector3(0, 0, cross_bottom))
 	
 	# Horizontal lines 
-	immediate_mesh.surface_add_vertex(Vector3(-cross, 0, 0))
-	immediate_mesh.surface_add_vertex(Vector3(cross, 0, 0))
+	immediate_mesh.surface_add_vertex(Vector3(cross_left, 0, 0))
+	immediate_mesh.surface_add_vertex(Vector3(cross_right, 0, 0))
 	immediate_mesh.surface_end()
 
 	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
